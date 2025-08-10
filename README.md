@@ -6,6 +6,10 @@ This is a prototype game made for the [Digital Naturalism Conference (Dinacon) 2
 
 The game world is built out of photogrammetry scans of actual coral & sea sponges taken during the conference in the village's reefs.
 
+## Download
+
+See the [itch.io page](https://blunderboffins.itch.io/karang-lestari) to download a build of the game!
+
 ## Controls
 
 Keyboard/mouse:
