@@ -61,7 +61,8 @@ jobs:
           if ! cargo tree -V >/dev/null 2>&1; then
             cargo install cargo-tree
           fi
-          cargo tree -e features -i getrandom --target wasm32-unknown-unknown
+          cargo tree -e features -i getrandom@0.2.16 --target wasm32-unknown-unknown
+          cargo tree -e features -i getrandom@0.3.3 --target wasm32-unknown-unknown
 
 
       - name: install wasm-bindgen-cli
