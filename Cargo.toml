@@ -21,12 +21,6 @@ rand = "0.9.1"
 noise = "0.8.1"
 glam = "0.29.3"
 
-[target.'cfg(target_arch = "wasm32")'.dependencies]
-getrandom = { version = "0.3", features = ["wasm_js"] }
-
-[target.wasm32-unknown-unknown]
-rustflags = ["--cfg", "getrandom_backend=\"wasm_js\""]
-
 # These lints may be important signals about code quality, but normal Bevy code
 # commonly triggers them and the CI workflow treats them as errors, so we've
 # chosen to allow them in this template.
@@ -35,6 +29,3 @@ rustflags = ["--cfg", "getrandom_backend=\"wasm_js\""]
 [lints.clippy]
 too_many_arguments = "allow"
 type_complexity = "allow"
-
-[build]
-rustflags = ["--cfg", "getrandom_backend=\"wasm_js\""]
