@@ -2,9 +2,11 @@
 
 ![Screenshot of the game.](docs/screenshot.png)
 
-This is a prototype game made for the [Digital Naturalism Conference (Dinacon) 2025](https://2025.dinacon.org/), held in Les Village, Bali, Indonesia.
+This is a prototype game made for the [Digital Naturalism Conference (Dinacon) 2025](https://2025.dinacon.org/), held in
+Les Village, Bali, Indonesia.
 
-The game world is built out of photogrammetry scans of actual coral & sea sponges taken during the conference in the village's reefs.
+The game world is built out of photogrammetry scans of actual coral & sea sponges taken during the conference in the
+village's reefs.
 
 ## Download
 
@@ -38,9 +40,9 @@ Photogrammetry by:
 
 A game by Jay.
 
+Note: Generative AI was used in writing the code for this prototype. Mostly it made a mess of things, though :P
 
 ## Built with Bevy
-
 
 This game was built using the wonderful open-source [Bevy Game Engine](https://bevy.org).
 
