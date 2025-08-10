@@ -23,6 +23,11 @@ use bevy::prelude::*;
 use std::f32::consts::PI;
 use bevy::window::WindowTheme;
 
+#[cfg(target_arch = "wasm32")]
+const _: () = {
+    use getrandom02 as _;
+};
+
 fn main() {
     let standard_lights: Vec<LightingSetup> = get_standard_lights();
 

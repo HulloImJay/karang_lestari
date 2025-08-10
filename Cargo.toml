@@ -24,6 +24,9 @@ glam = "0.29.3"
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 getrandom = { version = "0.3.3", features = ["wasm_js"] }
 
+# For crates (via rand-core) that still pull getrandom 0.2
+getrandom02 = { package = "getrandom", version = "0.2", features = ["js"] }
+
 # These lints may be important signals about code quality, but normal Bevy code
 # commonly triggers them and the CI workflow treats them as errors, so we've
 # chosen to allow them in this template.
