@@ -1,5 +1,8 @@
 name: Release
 
+permissions:
+  contents: write
+
 on:
   push:
     tags:
@@ -181,6 +184,9 @@ jobs:
 
       - name: Build
         run: |
+          env:
+            MACOSX_DEPLOYMENT_TARGET: "10.9"
+            CFLAGS: "-fno-stack-check"
           cargo build --release --target x86_64-apple-darwin
 
       - name: Prepare Package
@@ -226,6 +232,8 @@ jobs:
           export MACOSX_DEPLOYMENT_TARGET="11"
 
       - name: Build
+        env:
+          MACOSX_DEPLOYMENT_TARGET: "11"
         run: |
           cargo build --release --target aarch64-apple-darwin
 
