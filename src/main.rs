@@ -27,6 +27,7 @@ fn main() {
     let standard_lights: Vec<LightingSetup> = get_standard_lights();
 
     let common_objects = get_common_objects();
+    let human_objects = get_human_objects();
 
     App::new()
         .add_plugins(DefaultPlugins.set(AssetPlugin {
@@ -68,7 +69,7 @@ fn main() {
             vec![
                 Region::new(
                     "Smooth Sandbanks".into(),
-                    4,
+                    20,
                     HeightNoise {
                         perlin_height: 1.0,
                         perlin_scale: 0.1,
@@ -85,7 +86,7 @@ fn main() {
                 ),
                 Region::new(
                     "Lil Cliffs".into(),
-                    3,
+                    10,
                     HeightNoise {
                         perlin_height: 1.0,
                         perlin_scale: 0.1,
@@ -101,8 +102,25 @@ fn main() {
                     standard_lights.clone(),
                 ),
                 Region::new(
+                    "Restoration Zone".into(),
+                    5,
+                    HeightNoise {
+                        perlin_height: 1.0,
+                        perlin_scale: 0.1,
+                        perlin: Default::default(),
+                        terrace_height: 2.0,
+                        terrace_steps: 3.0,
+                        terrace_scale: 0.02,
+                        terrace_source: Default::default(),
+                        terrace_smooth_width: 0.1,
+                        offset: 0.0,
+                    },
+                    [common_objects, human_objects].concat(),
+                    standard_lights.clone(),
+                ),
+                Region::new(
                     "Big Cliffs".into(),
-                    2,
+                    1,
                     HeightNoise {
                         perlin_height: 1.0,
                         perlin_scale: 0.1,
@@ -125,7 +143,7 @@ fn main() {
                         },
                         ObjectSelection {
                             name: "small_yellow_coral_paula".into(),
-                            selection_weight: 1,
+                            selection_weight: 3,
                         },
                     ]),
                     vec![
@@ -391,6 +409,39 @@ fn get_common_objects() -> Vec<ObjectSelection> {
         ObjectSelection {
             name: "turbinaria_photos_komang".into(),
             selection_weight: 2,
+        },
+    ])
+}
+
+fn get_human_objects() -> Vec<ObjectSelection> {
+    Vec::from([
+        ObjectSelection {
+            name: "block_arch_paula".into(),
+            selection_weight: 1,
+        },
+        ObjectSelection {
+            name: "concrete_dome_anten".into(),
+            selection_weight: 1,
+        },
+        ObjectSelection {
+            name: "concrete_turtle_anten".into(),
+            selection_weight: 1,
+        },
+        ObjectSelection {
+            name: "concrete_turtle_komang".into(),
+            selection_weight: 1,
+        },
+        ObjectSelection {
+            name: "coral_table_komang".into(),
+            selection_weight: 1,
+        },
+        ObjectSelection {
+            name: "les_komang".into(),
+            selection_weight: 1,
+        },
+        ObjectSelection {
+            name: "tunnel_komang".into(),
+            selection_weight: 1,
         },
     ])
 }
