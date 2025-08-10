@@ -25,9 +25,6 @@ jobs:
   release-wasm:
     runs-on: ubuntu-latest
 
-    env:
-      RUSTFLAGS: '--cfg getrandom_backend="wasm_js"'
-
     steps:
       - uses: olegtarasov/get-tag@v2.1.2
         id: get_version
@@ -37,34 +34,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: wasm32-unknown-unknown
-
-      # 👇 Add these debug steps right here, BEFORE the build
-      - name: Show cargo/rustc versions + env
-        run: |
-          rustc -Vv
-          cargo -V
-          echo "RUSTFLAGS=$RUSTFLAGS"
-
-      - name: Show .cargo/config.toml (if present)
-        run: |
-          if [ -f .cargo/config.toml ]; then
-            echo ".cargo/config.toml:"
-            cat .cargo/config.toml
-          else
-            echo ".cargo/config.toml NOT FOUND"
-          fi
-
-      - name: Check getrandom features (wasm target)
-        run: |
-          set -e
-          # Try cargo tree; if it's not available, install it quickly.
-          if ! cargo tree -V >/dev/null 2>&1; then
-            cargo install cargo-tree
-          fi
-          cargo tree -e features -i getrandom@0.2.16 --target wasm32-unknown-unknown
-          cargo tree -e features -i getrandom@0.3.3 --target wasm32-unknown-unknown
-
-
+          
       - name: install wasm-bindgen-cli
         run: |
           cargo install wasm-bindgen-cli
@@ -239,7 +209,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file:  ${{ env.binary }}-macOS-intel.dmg
+          file: ${{ env.binary }}-macOS-intel.dmg
           asset_name: ${{ env.binary }}-macOS-intel-${{ steps.get_version.outputs.tag }}.dmg
           tag: ${{ github.ref }}
           overwrite: true
@@ -257,7 +227,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: aarch64-apple-darwin
-      - name: Environment 
+      - name: Environment
         # macOS 11 was the first version to support ARM
         run: |
           export MACOSX_DEPLOYMENT_TARGET="11"
