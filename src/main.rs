@@ -489,7 +489,7 @@ fn setup_player(mut commands: Commands, asset_server: Res<AssetServer>) {
             ..default()
         },
         TextShadow {
-            offset: Vec2::new(2.0, 2.0),
+            offset: Vec2::new(1.0, 1.0),
             color: Color::linear_rgba(0.2, 0.0, 0.2, 0.75),
         },
         TextLayout::new_with_justify(JustifyText::Center),

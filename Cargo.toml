@@ -4,9 +4,6 @@ version = "0.1.0"
 edition = "2024"
 license = "MIT OR Apache-2.0 OR CC0-1.0"
 
-# Compile with Performance Optimizations:
-# https://bevyengine.org/learn/book/getting-started/setup/#compile-with-performance-optimizations
-
 # Enable a small amount of optimization in debug mode
 [profile.dev]
 opt-level = 1
@@ -16,7 +13,7 @@ opt-level = 1
 opt-level = 3
 
 [dependencies]
-bevy = {version="0.16", features = ["jpeg"]}
+bevy = { version = "0.16", features = ["jpeg"] }
 rand = "0.9.1"
 noise = "0.8.1"
 glam = "0.29.3"
@@ -35,3 +32,12 @@ rustflags = ["--cfg", "getrandom_backend=\"wasm_js\""]
 [lints.clippy]
 too_many_arguments = "allow"
 type_complexity = "allow"
+
+[package.metadata.bundle]
+name = "Karang Lestari"
+identifier = "com.blunderboffins.karang_lestari"
+version = "0.1.0"
+entitlements = "entitlements.plist"
+
+[build-dependencies]
+embed-resource = "1.6.3"
