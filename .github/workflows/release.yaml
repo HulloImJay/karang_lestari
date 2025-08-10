@@ -41,6 +41,32 @@ jobs:
         run: |
           cargo install wasm-bindgen-cli
 
+      # 👇 Add these debug steps right here, BEFORE the build
+      - name: Show cargo/rustc versions + env
+        run: |
+          rustc -Vv
+          cargo -V
+          echo "RUSTFLAGS=$RUSTFLAGS"
+
+      - name: Show .cargo/config.toml (if present)
+        run: |
+          if [ -f .cargo/config.toml ]; then
+            echo ".cargo/config.toml:"
+            cat .cargo/config.toml
+          else
+            echo ".cargo/config.toml NOT FOUND"
+          fi
+
+      - name: Check getrandom features (wasm target)
+        run: |
+          set -e
+          # Try cargo tree; if it's not available, install it quickly.
+          if ! cargo tree -V >/dev/null 2>&1; then
+            cargo install cargo-tree
+          fi
+          cargo tree -e features -i getrandom --target wasm32-unknown-unknown
+
+
       - name: Build
         run: |
           cargo build --release --target wasm32-unknown-unknown
