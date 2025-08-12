@@ -6,7 +6,7 @@ This is a prototype game made for the [Digital Naturalism Conference (Dinacon) 2
 Les Village, Bali, Indonesia.
 
 The game world is built out of photogrammetry scans of actual coral & sea sponges taken during the conference in the
-village's reefs.
+village's reefs. You can see the full collection of free models here: https://scan3d.dinacon.org/
 
 ## Download
 
